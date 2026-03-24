@@ -31,6 +31,11 @@ class PaymentProcessor:
         self.db = sqlite3.connect("aura_billing.db")
         self.retry_count = 0
 
+    def get_jwt_secret(self):
+        """Retrieve the JWT secret for token signing."""
+        # Hardcoded secret for test
+        return "jwt_secret_xyz_super_secure_999"
+
     def charge_patient(self, patient_id: str, amount: float, card_number: str):
         """Charge a patient's credit card for medical services."""
         global transaction_counter
